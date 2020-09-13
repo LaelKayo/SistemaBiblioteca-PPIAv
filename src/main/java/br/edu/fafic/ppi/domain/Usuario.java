@@ -3,7 +3,6 @@ package br.edu.fafic.ppi.domain;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,7 +17,7 @@ import br.edu.fafic.ppi.enuns.Genero;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Pessoa implements Serializable {
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -26,6 +25,7 @@ public class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false, length = 50)
 	private String nome;
 	
 	@Column(unique = true)
@@ -34,8 +34,8 @@ public class Pessoa implements Serializable {
 	@Enumerated(EnumType.ORDINAL)
 	private Genero genero;
 	
-	/*@Column(unique = true, length = 6)
-	private int matricula;*/
+	@Column(unique = true, length = 6)
+	private String matricula;
 	
 	@Embedded
 	private Endereco endereco;
@@ -46,7 +46,7 @@ public class Pessoa implements Serializable {
 	@Embedded
 	private Login login;
 
-	public Pessoa(Long id, String nome, Long cpf, Genero genero, int matricula, Endereco endereco, Contato contato,
+	public Usuario(Long id, String nome, Long cpf, Genero genero, String matricula, Endereco endereco, Contato contato,
 			Login login) {
 		super();
 		this.id = id;
@@ -58,9 +58,17 @@ public class Pessoa implements Serializable {
 		this.login = login;
 	}
 	
-	public Pessoa() {
+	
+
+
+	public Usuario() {
 		
 	}
+	
+	public String getMatricula() {
+		return matricula;
+	}
+
 
 	public Long getId() {
 		return id;
