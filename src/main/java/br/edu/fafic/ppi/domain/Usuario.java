@@ -1,7 +1,9 @@
 package br.edu.fafic.ppi.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 
 import br.edu.fafic.ppi.enuns.Genero;
 
@@ -33,9 +36,7 @@ public class Usuario implements Serializable {
 
 	@Enumerated(EnumType.ORDINAL)
 	private Genero genero;
-	
-	@Column(unique = true, length = 6)
-	private String matricula;
+
 	
 	@Embedded
 	private Endereco endereco;
@@ -45,11 +46,14 @@ public class Usuario implements Serializable {
 	
 	@Embedded
 	private Login login;
+	
+	@ManyToMany(mappedBy = "usuario")
+	private List<Movimentacao> movimentacoes;
 
-	public Usuario(Long id, String nome, Long cpf, Genero genero, String matricula, Endereco endereco, Contato contato,
+	public Usuario(String nome, Long cpf, Genero genero,  Endereco endereco, Contato contato,
 			Login login) {
 		super();
-		this.id = id;
+	
 		this.nome = nome;
 		this.cpf = cpf;
 		this.genero = genero;
@@ -64,11 +68,6 @@ public class Usuario implements Serializable {
 	public Usuario() {
 		
 	}
-	
-	public String getMatricula() {
-		return matricula;
-	}
-
 
 	public Long getId() {
 		return id;

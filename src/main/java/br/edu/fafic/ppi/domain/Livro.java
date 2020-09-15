@@ -43,9 +43,8 @@ public class Livro implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Livro(Long id, String nome, String isbn, Area area) {
+	public Livro(String nome, String isbn, Area area) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.isbn = isbn;
 		this.area = area;

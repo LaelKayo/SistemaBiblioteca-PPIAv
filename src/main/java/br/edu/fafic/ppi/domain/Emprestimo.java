@@ -1,5 +1,6 @@
 package br.edu.fafic.ppi.domain;
 
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -17,15 +18,30 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Emprestimo implements Serializable{
-
+	
+	
+	
+	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
+
 	
 	
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dataEmprestimo;
 	
@@ -39,21 +55,15 @@ public class Emprestimo implements Serializable{
 	}
 	
 
-	public Emprestimo(Long id, Date dataEmprestimo, List<Livro> livrosLocados) {
+	public Emprestimo(Date dataEmprestimo, List<Livro> livrosLocados) {
 		super();
-		this.id = id;
+
 		this.dataEmprestimo = dataEmprestimo;
 		this.livrosLocados = livrosLocados;
 	}
 
 
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Date getDataEmprestimo() {
 		return dataEmprestimo;
@@ -69,12 +79,16 @@ public class Emprestimo implements Serializable{
 
 	public void setLivrosLocados(List<Livro> livrosLocados) {
 		this.livrosLocados = livrosLocados;
+		
+		
 	}
+
 
 	@Override
 	public String toString() {
-		return "Emprestimo []";
-	} 
+		return "Emprestimo [id=" + id + ", dataEmprestimo=" + dataEmprestimo + ", livrosLocados=" + livrosLocados + "]";
+	}
+ 
 	
 	
 	

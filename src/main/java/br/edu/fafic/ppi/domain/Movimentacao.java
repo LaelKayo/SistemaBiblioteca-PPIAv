@@ -3,12 +3,15 @@ package br.edu.fafic.ppi.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Movimentacao implements Serializable {
@@ -19,16 +22,24 @@ public class Movimentacao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToMany
-	private List<Usuario> usuarios;
-	@OneToMany
+	@OneToOne
 	private Emprestimo emprestimo;
-	@OneToMany
+	
+	@OneToOne
 	private Devolucao devolucao;
+	
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinTable(name = "Movimentacao_Usuarios", 
+		joinColumns = {
+				@JoinColumn(name = "Movimentacao_id")},
+		inverseJoinColumns = {
+				@JoinColumn(name = "Usuario_id")})
+	private Usuario usuario;
 
-	public Movimentacao(List<Usuario> usuarios, Emprestimo emprestimo, Devolucao devolucao) {
+	public Movimentacao(Emprestimo emprestimo, Devolucao devolucao) {
 		super();
-		this.usuarios = usuarios;
+
 		this.emprestimo = emprestimo;
 		this.devolucao = devolucao;
 	}
@@ -39,14 +50,6 @@ public class Movimentacao implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 
 	public Emprestimo getEmprestimo() {
@@ -67,8 +70,8 @@ public class Movimentacao implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Movimentacao [id=" + id + ", usuarios=" + usuarios + ", emprestimo=" + emprestimo + ", devolucao="
-				+ devolucao + "]";
+		return "Movimentacao [id=" + id + ", emprestimo=" + emprestimo + ", devolucao=" + devolucao + "]";
 	}
+
 
 }

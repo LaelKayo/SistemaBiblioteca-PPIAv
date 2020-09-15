@@ -9,46 +9,60 @@ import br.edu.fafic.ppi.enuns.Genero;
 import br.edu.fafic.ppi.enuns.Periodo;
 
 @Entity
-public class Aluno extends Usuario {
+public class Aluno extends Usuario{
 
+	
 	private static final long serialVersionUID = 1L;
 
+	
 	@OneToOne
 	private Curso curso;
-
+	
+	
 	@Enumerated(EnumType.ORDINAL)
 	private Periodo periodo;
+	
+	
+	
+	
 
-	public Aluno(Long id, String nome, Long cpf, Genero genero, String matricula, Endereco endereco, Contato contato,
+
+	public Aluno(String nome, Long cpf, Genero genero, Endereco endereco, Contato contato,
 			Login login, Curso curso, Periodo periodo) {
-		super(id, nome, cpf, genero, matricula, endereco, contato, login);
+		super(nome, cpf, genero, endereco, contato, login);
 		this.curso = curso;
 		this.periodo = periodo;
 	}
-
 	public Aluno() {
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public Curso getCurso() {
 		return curso;
 	}
 
+
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
+
 
 	public Periodo getPeriodo() {
 		return periodo;
 	}
 
+
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
 	}
-
 	@Override
 	public String toString() {
 		return "Aluno [curso=" + curso + ", periodo=" + periodo + "]";
 	}
-
+	
+	
+	
+	
+	
 }

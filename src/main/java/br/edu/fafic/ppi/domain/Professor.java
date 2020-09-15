@@ -4,7 +4,7 @@ package br.edu.fafic.ppi.domain;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import br.edu.fafic.ppi.enuns.Area;
 import br.edu.fafic.ppi.enuns.Genero;
@@ -21,7 +21,7 @@ public class Professor extends Usuario{
 	
 	
 	
-	@OneToMany
+	@OneToOne
 	private Curso curso;
 	
 	
@@ -37,9 +37,9 @@ public class Professor extends Usuario{
 
 
 
-	public Professor(Long id, String nome, Long cpf, Genero genero, String matricula, Endereco endereco,
+	public Professor(String nome, Long cpf, Genero genero, Endereco endereco,
 			Contato contato, Login login, Curso curso, Area area) {
-		super(id, nome, cpf, genero, matricula, endereco, contato, login);
+		super(nome, cpf, genero, endereco, contato, login);
 		this.curso = curso;
 		this.area = area;
 	}

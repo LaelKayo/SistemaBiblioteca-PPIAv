@@ -31,12 +31,12 @@ public class Biblioteca implements Serializable{
 	private String nomeInstituicao;
 	
 	
-	@Column(nullable = false)
+
 	@OneToOne
 	private Bibliotecario bibliotecario;
 	
 	@OneToMany
-	private Movimentacao usuarios;
+	private List<Usuario> usuarios;
 	
 	@OneToMany
 	private List<Livro> acervo;
@@ -50,7 +50,7 @@ public class Biblioteca implements Serializable{
 				+ bibliotecario + ", usuarios=" + usuarios + ", acervo=" + acervo + "]";
 	}
 
-	public Biblioteca(String nome, String nomeInstituicao, Bibliotecario bibliotecario, Movimentacao usuarios,
+	public Biblioteca(String nome, String nomeInstituicao, Bibliotecario bibliotecario, List<Usuario> usuarios,
 			List<Livro> acervo) {
 		super();
 		this.nome = nome;
@@ -92,11 +92,11 @@ public class Biblioteca implements Serializable{
 		this.bibliotecario = bibliotecario;
 	}
 
-	public Movimentacao getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(Movimentacao usuarios) {
+	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
 

@@ -27,4 +27,8 @@ public class BibliotecarioService {
 		return repository.save(bibliotecario);
 	}
 
+	public boolean deleteById(Long id) {
+		repository.deleteById(id);
+		return true;
+	}
 }

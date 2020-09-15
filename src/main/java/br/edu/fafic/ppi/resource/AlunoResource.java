@@ -11,33 +11,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.fafic.ppi.domain.Livro;
-import br.edu.fafic.ppi.service.LivroService;
+import br.edu.fafic.ppi.domain.Aluno;
+import br.edu.fafic.ppi.service.AlunoService;
 
 @RestController
-@RequestMapping(value = "/livro")
-public class LivroResource {
+@RequestMapping(value = "/aluno")
+public class AlunoResource {
 
 	@Autowired
-	private LivroService ls;
+	private AlunoService as;
 
-	public ResponseEntity<?> inserir(@RequestBody Livro livro) {
-		return new ResponseEntity<>(ls.inserir(livro), HttpStatus.OK);
+	public ResponseEntity<?> inserir(@RequestBody Aluno aluno) {
+		return new ResponseEntity<>(as.inserir(aluno), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id) throws Exception {
-		return new ResponseEntity<>(ls.findById(id), HttpStatus.OK);
+		return new ResponseEntity<>(as.findById(id), HttpStatus.OK);
 	}
 
 	@PutMapping
-	public ResponseEntity<?> update(@RequestBody Livro livro) throws Exception {
-		return new ResponseEntity<>(ls.update(livro), HttpStatus.OK);
+	public ResponseEntity<?> update(@RequestBody Aluno aluno) throws Exception {
+		return new ResponseEntity<>(as.update(aluno), HttpStatus.OK);
 	}
 
 	@DeleteMapping
 	public ResponseEntity<?> deleteById(@PathVariable Long id) throws Exception {
-		return new ResponseEntity<>(ls.deleteById(id), HttpStatus.OK);
+		return new ResponseEntity<>(as.deleteById(id), HttpStatus.OK);
 	}
-
 }
