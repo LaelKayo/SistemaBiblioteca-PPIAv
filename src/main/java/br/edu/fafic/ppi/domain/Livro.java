@@ -13,91 +13,83 @@ import javax.persistence.Id;
 import br.edu.fafic.ppi.enuns.Area;
 
 @Entity
-public class Livro implements Serializable{
+public class Livro implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false, length = 100)
 	private String nome;
-	
-	@Column(unique = true,length = 10)
+
+	@Column(unique = true, length = 10)
 	private String isbn;
-	
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	private Area area;
 
-	
-	
-	
-	
+	private int quantLivro;
+
 	public Livro() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Livro(String nome, String isbn, Area area) {
+	public Livro(String nome, String isbn, Area area, int quantLivro) {
 		super();
 		this.nome = nome;
 		this.isbn = isbn;
 		this.area = area;
+		this.quantLivro = quantLivro;
 	}
-
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getNome() {
 		return nome;
 	}
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	public String getIsbn() {
 		return isbn;
 	}
 
-
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-
 
 	public Area getArea() {
 		return area;
 	}
 
-
 	public void setArea(Area area) {
 		this.area = area;
 	}
 
+	public int getQuantLivro() {
+		return quantLivro;
+	}
+
+	public void setQuantLivro(int quantLivro) {
+		this.quantLivro = quantLivro;
+	}
 
 	@Override
 	public String toString() {
-		return "Livro [id=" + id + ", nome=" + nome + ", isbn=" + isbn + ", area=" + area + "]";
+		return "Livro [nome=" + nome + ", isbn=" + isbn + ", area=" + area + ", quantLivro=" + quantLivro + "]";
 	}
-	
-	
-	
-	
 
 }

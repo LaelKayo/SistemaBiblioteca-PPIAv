@@ -41,7 +41,7 @@ public class Devolucao implements Serializable{
 	}
 
 	public Devolucao() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override

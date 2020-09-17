@@ -8,4 +8,5 @@ import br.edu.fafic.ppi.domain.Aluno;
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Long >{
 
+	
 }
