@@ -3,7 +3,6 @@ package br.edu.fafic.ppi.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -32,7 +31,7 @@ public class Usuario implements Serializable {
 	private String nome;
 	
 	@Column(unique = true)
-	private Long cpf;
+	private String cpf;
 
 	@Enumerated(EnumType.ORDINAL)
 	private Genero genero;
@@ -47,10 +46,11 @@ public class Usuario implements Serializable {
 	@Embedded
 	private Login login;
 	
+
 	@ManyToMany(mappedBy = "usuario")
 	private List<Movimentacao> movimentacoes;
 
-	public Usuario(String nome, Long cpf, Genero genero,  Endereco endereco, Contato contato,
+	public Usuario(String nome, String cpf, Genero genero,  Endereco endereco, Contato contato,
 			Login login) {
 		super();
 	
@@ -85,11 +85,11 @@ public class Usuario implements Serializable {
 		this.nome = nome;
 	}
 
-	public Long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 

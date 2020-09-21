@@ -28,9 +28,17 @@ public enum Area {
 		this.valor = valor;
 	}
 
-	public static Enum toEnum(Integer codigo) {
+	public static Area toEnum(Integer codigo) {
 		for (Area a : Area.values()) {
 			if (codigo.equals(a.codigo)) {
+				return a;
+			}
+		}
+		return null;
+	}
+	public static Area toEnum(String valor) {
+		for (Area a : Area.values()) {
+			if (valor.equals(a.valor)) {
 				return a;
 			}
 		}

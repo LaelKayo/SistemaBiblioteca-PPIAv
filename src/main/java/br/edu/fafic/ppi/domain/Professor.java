@@ -6,6 +6,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import br.edu.fafic.ppi.enuns.Area;
 import br.edu.fafic.ppi.enuns.Genero;
 
@@ -22,6 +25,7 @@ public class Professor extends Usuario{
 	
 	
 	@OneToOne
+	@Cascade(CascadeType.ALL)
 	private Curso curso;
 	
 	
@@ -37,7 +41,7 @@ public class Professor extends Usuario{
 
 
 
-	public Professor(String nome, Long cpf, Genero genero, Endereco endereco,
+	public Professor(String nome, String cpf, Genero genero, Endereco endereco,
 			Contato contato, Login login, Curso curso, Area area) {
 		super(nome, cpf, genero, endereco, contato, login);
 		this.curso = curso;

@@ -28,7 +28,7 @@ public enum Genero {
 		this.valor = valor;
 	}
 
-	public static Enum toEnum(Integer codigo) {
+	public static Enum<?> toEnum(Integer codigo) {
 		for (Genero g : Genero.values()) {
 			if (codigo.equals(g.codigo)) {
 				return g;

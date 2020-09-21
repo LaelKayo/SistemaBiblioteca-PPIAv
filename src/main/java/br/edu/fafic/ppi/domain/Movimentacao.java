@@ -1,7 +1,6 @@
 package br.edu.fafic.ppi.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -32,9 +31,9 @@ public class Movimentacao implements Serializable {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinTable(name = "Movimentacao_Usuarios", 
 		joinColumns = {
-				@JoinColumn(name = "Movimentacao_id")},
+		@JoinColumn(name = "Movimentacao_id")},
 		inverseJoinColumns = {
-				@JoinColumn(name = "Usuario_id")})
+		@JoinColumn(name = "Usuario_id")})
 	private Usuario usuario;
 
 	public Movimentacao(Emprestimo emprestimo, Devolucao devolucao) {

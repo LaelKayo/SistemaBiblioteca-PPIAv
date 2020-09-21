@@ -8,27 +8,34 @@ import org.springframework.stereotype.Service;
 import br.edu.fafic.ppi.domain.Professor;
 import br.edu.fafic.ppi.repository.ProfessorRepository;
 
+
 @Service
 public class ProfessorService {
-
+	
+	
 	@Autowired
 	private ProfessorRepository pr;
-	
-	public Professor inserir(Professor professor) {
-		return pr.save(professor);
+
+	public Professor findByNome(String nome) throws Exception {
+		Optional<Professor> al = pr.findByNome(nome);
+
+		return al.orElseThrow(() -> new Exception("Erro ao consultar aluno"));
+
 	}
+
 	
-	public Professor findById(Long id) throws Exception{
-		Optional<Professor> p = pr.findById(id);
-		return p.orElseThrow(() -> new Exception("Erro ao encontrar o professor"));
+	  public Professor findByMatricula(Integer matricula)throws Exception{
+	  Optional<Professor> al = pr.findByMatricula(matricula);
+	  
+	  return al.orElseThrow(()-> new Exception("Erro ao consultar aluno"));
+	  
+	  }
+	 
+
+	public Professor save(Professor professor) {
+		Professor a = pr.save(professor);
+
+		return a;
 	}
-	
-	public Professor update(Professor professor) {
-		return pr.save(professor);
-	}
-	
-	public boolean deleteById(Long id) {
-		pr.deleteById(id);
-		return true;
-	}
+
 }

@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import br.edu.fafic.ppi.domain.Bibliotecario;
 import br.edu.fafic.ppi.repository.BibliotecarioRepository;
 
+
 @Service
 public class BibliotecarioService {
 	
 	@Autowired
 	private BibliotecarioRepository repository;
+	
 	
 	public Bibliotecario inserir(Bibliotecario bibliotecario) {
 		return repository.save(bibliotecario);
@@ -27,8 +29,5 @@ public class BibliotecarioService {
 		return repository.save(bibliotecario);
 	}
 
-	public boolean deleteById(Long id) {
-		repository.deleteById(id);
-		return true;
-	}
+
 }

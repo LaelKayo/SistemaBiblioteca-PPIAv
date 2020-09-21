@@ -18,7 +18,6 @@ public class Endereco{
 	private String uf;
 	
 	public Endereco(String rua, int numero, String bairro, String cidade, String uf) {
-		super();
 		this.rua = rua;
 		this.numero = numero;
 		this.bairro = bairro;
