@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.edu.fafic.ppi.domain.Aluno;
 import br.edu.fafic.ppi.repository.AlunoRepository;
+import br.edu.fafic.ppi.repository.EmprestimoRepository;
 
 @Service
 public class AlunoService {
@@ -14,7 +15,6 @@ public class AlunoService {
 	
 	@Autowired
 	private AlunoRepository ar;
-	
 	
 	
 	public Aluno findByNome(String nome)throws Exception{
@@ -34,13 +34,15 @@ public class AlunoService {
 	  
 	  }
 	 
-	
 	public Aluno save(Aluno aluno) {
 		Aluno a = ar.save(aluno);
 		
 		return a;
 	}
 	
-	
-	
+	public void deleteById(Long id) {
+		ar.deleteById(id);
+		
+	}
+		
 }

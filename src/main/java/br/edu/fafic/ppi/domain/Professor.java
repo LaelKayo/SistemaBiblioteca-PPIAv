@@ -29,7 +29,7 @@ public class Professor extends Usuario{
 	private Curso curso;
 	
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private Area area;
 	
 	

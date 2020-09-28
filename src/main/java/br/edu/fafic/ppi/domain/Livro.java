@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.edu.fafic.ppi.enuns.Area;
 
 @Entity
@@ -25,7 +27,7 @@ public class Livro implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false, length = 100)
+	@Column(length = 100)
 	private String nome;
 	
 	@Column(unique = true,length = 10)
@@ -35,15 +37,15 @@ public class Livro implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Area area;
 	
-	private int quantLivro;
+	private Integer quantLivro;
 
-	
-	
 	
 	
 	public Livro() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	public Livro(String nome, String isbn, Area area,int quantLivro) {
 		super();
@@ -69,11 +71,11 @@ public class Livro implements Serializable{
 	}
 
 
-	public int getQuantLivro() {
+	public Integer getQuantLivro() {
 		return quantLivro;
 	}
 
-	public void setQuantLivro(int quantLivro) {
+	public void setQuantLivro(Integer quantLivro) {
 		this.quantLivro = quantLivro;
 	}
 

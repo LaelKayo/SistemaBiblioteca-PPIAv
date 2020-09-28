@@ -8,7 +8,5 @@ import br.edu.fafic.ppi.domain.Bibliotecario;
 @Repository
 public interface BibliotecarioRepository extends JpaRepository<Bibliotecario, Long>{
 	
-	
-	
 
 }

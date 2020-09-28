@@ -42,4 +42,11 @@ public class LivroService {
 		return l.orElseThrow(()-> new Exception("Erro ao consultar livro"));
 	}
 	
+	
+	public void deleteById(Long id) {
+		
+		
+		lr.deleteById(id);
+	}
+	
 }

@@ -15,6 +15,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.edu.fafic.ppi.enuns.Genero;
 
 @Entity
@@ -26,34 +28,32 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false, length = 50)
 	private String nome;
-	
+
 	@Column(unique = true)
 	private String cpf;
 
 	@Enumerated(EnumType.ORDINAL)
 	private Genero genero;
 
-	
 	@Embedded
 	private Endereco endereco;
-	
+
 	@Embedded
 	private Contato contato;
-	
+
 	@Embedded
 	private Login login;
-	
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "usuario")
-	private List<Movimentacao> movimentacoes;
+	private List<Emprestimo> emprestimo;
 
-	public Usuario(String nome, String cpf, Genero genero,  Endereco endereco, Contato contato,
-			Login login) {
+	public Usuario(String nome, String cpf, Genero genero, Endereco endereco, Contato contato, Login login) {
 		super();
-	
+
 		this.nome = nome;
 		this.cpf = cpf;
 		this.genero = genero;
@@ -61,12 +61,9 @@ public class Usuario implements Serializable {
 		this.contato = contato;
 		this.login = login;
 	}
-	
-	
-
 
 	public Usuario() {
-		
+
 	}
 
 	public Long getId() {
@@ -75,6 +72,21 @@ public class Usuario implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		
+		return "Usuario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", genero=" + genero + ", endereco=" + endereco
+				+ ", contato=" + contato + ", login=" + login + ", emprestimos=" + emprestimo + "]";
+	}
+
+	public List<Emprestimo> getEmprestimos() {
+		return emprestimo;
+	}
+
+	public void setEmprestimos(List<Emprestimo> emprestimos) {
+		this.emprestimo = emprestimos;
 	}
 
 	public String getNome() {

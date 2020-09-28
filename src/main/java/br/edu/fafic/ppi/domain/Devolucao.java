@@ -3,7 +3,7 @@ package br.edu.fafic.ppi.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +25,7 @@ public class Devolucao implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	private Emprestimo emprestimo;
 
 	@Temporal(TemporalType.DATE)
@@ -33,11 +33,10 @@ public class Devolucao implements Serializable{
 
 	private Double multa;
 
-	public Devolucao(Emprestimo emprestimo, Date dataDevolucao, Double multa) {
+	public Devolucao(Emprestimo emprestimo, Date dataDevolucao) {
 		super();
 		this.emprestimo = emprestimo;
 		this.dataDevolucao = dataDevolucao;
-		this.multa = multa;
 	}
 
 	public Devolucao() {

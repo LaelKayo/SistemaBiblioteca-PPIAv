@@ -37,5 +37,11 @@ public class ProfessorService {
 
 		return a;
 	}
+	
+	
+	public void deleteById(Long id) {
+		pr.deleteById(id);
+		
+	}
 
 }
