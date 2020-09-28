@@ -1,6 +1,8 @@
 package br.edu.fafic.ppi.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+//import java.util.Date;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -11,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+//import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Devolucao implements Serializable{
@@ -29,6 +33,7 @@ public class Devolucao implements Serializable{
 	private Emprestimo emprestimo;
 
 	@Temporal(TemporalType.DATE)
+//	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataDevolucao;
 
 	private Double multa;

@@ -23,9 +23,7 @@ public class AlunoService {
 		return al.orElseThrow(()-> new Exception("Erro ao consultar aluno"));
 		
 	}
-	
-
-	
+		
 	public Aluno findByMatricula(Integer matricula)throws Exception{
 		  
 	  Optional<Aluno> al = ar.findByMatricula(matricula);

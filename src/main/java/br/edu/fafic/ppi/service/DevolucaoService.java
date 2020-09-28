@@ -1,6 +1,7 @@
 package br.edu.fafic.ppi.service;
 
-import java.util.Date;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +17,14 @@ public class DevolucaoService {
 	
 	@Autowired
 	DevolucaoRepository dr;
-	
-	
+		
 	public Devolucao save(Devolucao dev) {
 		
 		Devolucao d = dr.save(dev);
 		
 		return d;
 	}
-	
-	
+		
 	public Devolucao findByDevolucaoByNome (String nome) throws Exception {
 		
 		Optional<Devolucao> d = dr.findByDevolucaoByName(nome);
@@ -39,12 +38,22 @@ public class DevolucaoService {
 		
 	}
 	
-	public Devolucao findyByCalculoAtraso(Devolucao devolucao, Emprestimo emprestimo) {
 		
-	Date dia = new Date();
-	
-	
+	public boolean findyByCalculoAtraso(Devolucao devolucao, Emprestimo emprestimo) {
+		double multa = devolucao.getMulta();
+				
+		long diasAtrasados = ChronoUnit.DAYS.between(devolucao.getDataDevolucao().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), 
+				emprestimo.getDataEmprestimo().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+
+		if(diasAtrasados > 3) {
+			diasAtrasados -= 3;
+			multa = diasAtrasados * 2;
+		}
 		
-		return null;
+		devolucao.setMulta(multa);
+		
+//		double totalMulta = multa;
+
+		return true;
 	}
 }

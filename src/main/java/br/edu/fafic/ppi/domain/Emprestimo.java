@@ -1,7 +1,9 @@
 package br.edu.fafic.ppi.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
+//import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
