@@ -22,7 +22,8 @@ public class DevolucaoResource {
 	public ResponseEntity<Devolucao> save(@RequestBody Devolucao dev){
 		
 		Devolucao d = ds.save(dev);
-
+		
+		
 		return ResponseEntity.ok().body(d);
 		
 	}
@@ -30,11 +31,15 @@ public class DevolucaoResource {
 	@RequestMapping(value = "/update",method = RequestMethod.PUT)
 	public ResponseEntity<Devolucao> update(@RequestBody Devolucao dev){
 		
-		Devolucao d = ds.save(dev);
-
+		Devolucao d = ds.findyByCalculoAtraso(dev);
+				
+		ds.save(dev);
+		
+		
 		return ResponseEntity.ok().body(d);
 		
 	}
+	
 	
 	@RequestMapping(value = "/{nome}", method = RequestMethod.GET)
 	public ResponseEntity<Devolucao> findByDevolucaoByid(@PathVariable String nome) throws Exception{

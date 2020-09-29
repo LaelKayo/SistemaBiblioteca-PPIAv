@@ -23,6 +23,11 @@ public class Aluno extends Usuario{
 	@Enumerated(EnumType.STRING)
 	private Periodo periodo;
 	
+	
+	
+	
+
+
 	public Aluno(String nome, String cpf, Genero genero, Endereco endereco, Contato contato,Login login, Curso curso, Periodo periodo) {
 		super(nome, cpf, genero, endereco, contato, login);
 		this.curso = curso;

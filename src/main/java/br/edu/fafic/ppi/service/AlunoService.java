@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import br.edu.fafic.ppi.domain.Aluno;
 import br.edu.fafic.ppi.repository.AlunoRepository;
-import br.edu.fafic.ppi.repository.EmprestimoRepository;
 
 @Service
 public class AlunoService {
@@ -17,13 +16,16 @@ public class AlunoService {
 	private AlunoRepository ar;
 	
 	
+	
 	public Aluno findByNome(String nome)throws Exception{
 		Optional<Aluno> al = ar.findByNome(nome);
 		
 		return al.orElseThrow(()-> new Exception("Erro ao consultar aluno"));
 		
 	}
-		
+	
+
+	
 	public Aluno findByMatricula(Integer matricula)throws Exception{
 		  
 	  Optional<Aluno> al = ar.findByMatricula(matricula);
@@ -32,6 +34,7 @@ public class AlunoService {
 	  
 	  }
 	 
+	
 	public Aluno save(Aluno aluno) {
 		Aluno a = ar.save(aluno);
 		
@@ -42,5 +45,7 @@ public class AlunoService {
 		ar.deleteById(id);
 		
 	}
-		
+	
+	
+	
 }

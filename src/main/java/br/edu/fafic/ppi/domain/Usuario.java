@@ -47,7 +47,7 @@ public class Usuario implements Serializable {
 	@Embedded
 	private Login login;
 
-	@JsonIgnore
+	
 	@ManyToMany(mappedBy = "usuario")
 	private List<Emprestimo> emprestimo;
 
@@ -65,7 +65,7 @@ public class Usuario implements Serializable {
 	public Usuario() {
 
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -73,14 +73,16 @@ public class Usuario implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
+	
+	
 	@Override
 	public String toString() {
 		
 		return "Usuario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", genero=" + genero + ", endereco=" + endereco
 				+ ", contato=" + contato + ", login=" + login + ", emprestimos=" + emprestimo + "]";
 	}
-
+	@JsonIgnore
 	public List<Emprestimo> getEmprestimos() {
 		return emprestimo;
 	}

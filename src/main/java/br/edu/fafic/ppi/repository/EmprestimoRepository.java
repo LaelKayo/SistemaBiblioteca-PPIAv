@@ -14,4 +14,8 @@ public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long>{
 	@Query("select e from Emprestimo e join e.usuario u where u.nome= :nome")
 	public Optional<Emprestimo> findByEmprestimoAluno(String nome);
 	
+	
+
+	
+	
 }

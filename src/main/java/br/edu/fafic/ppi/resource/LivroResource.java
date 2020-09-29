@@ -25,6 +25,7 @@ public class LivroResource {
 	private LivroService ls;
 	
 	
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Livro> save(@RequestBody Livro l){
 		lr.save(l);
@@ -69,13 +70,17 @@ public class LivroResource {
 		return ResponseEntity.ok().body(ls.findByLivroQuantDisponivel());
 	}
 	
+	
+	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<List<Livro>> findByLivroQuantDisponivel(Long id) {
+	public ResponseEntity<List<Livro>> findByLivroQuantDisponivel(@PathVariable Long id) {
 		
 		
 		ls.deleteById(id);
 		
 		return ResponseEntity.ok().build();
 	}
-
+	
+	
+	
 }

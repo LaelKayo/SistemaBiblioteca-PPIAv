@@ -53,7 +53,7 @@ public class AlunoResource {
 	
 	
 	@RequestMapping(value = "/delete/{id}",method = RequestMethod.DELETE)
-	public ResponseEntity<Aluno> deleteById(@RequestBody Long id) {
+	public ResponseEntity<Aluno> deleteById(@PathVariable Long id) {
 
 		as.deleteById(id);
 

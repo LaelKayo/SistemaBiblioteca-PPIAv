@@ -12,6 +12,8 @@ import br.edu.fafic.ppi.domain.Emprestimo;
 import br.edu.fafic.ppi.service.EmprestimoService;
 
 
+
+
 @RestController
 @RequestMapping(value = "/emprestimo")
 public class EmprestimoResource {

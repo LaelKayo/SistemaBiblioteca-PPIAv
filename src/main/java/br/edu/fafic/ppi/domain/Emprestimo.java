@@ -1,9 +1,7 @@
 package br.edu.fafic.ppi.domain;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
-//import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -35,12 +33,10 @@ public class Emprestimo implements Serializable {
 	private Long id;
 
 	
-	@JsonIgnore
+	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinTable(name = "Emprestimos_Usuarios",
-	joinColumns = {
-			@JoinColumn(name = "Emprestimo_id") }, 
-	inverseJoinColumns = { @JoinColumn(name = "Usuario_id") })
+	@JoinTable(name = "Emprestimos_Usuarios", joinColumns = {
+			@JoinColumn(name = "Emprestimo_id") }, inverseJoinColumns = { @JoinColumn(name = "Usuario_id") })
 	private Usuario usuario;
 
 	@Temporal(TemporalType.DATE)
@@ -68,7 +64,7 @@ public class Emprestimo implements Serializable {
 	public void setDataEmprestimo(Date dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
-
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -85,7 +81,7 @@ public class Emprestimo implements Serializable {
 		this.livrosLocados = livrosLocados;
 
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
