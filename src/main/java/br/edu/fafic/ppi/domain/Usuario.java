@@ -47,11 +47,12 @@ public class Usuario implements Serializable {
 	@Embedded
 	private Login login;
 
+	private String perfil;
 	
 	@ManyToMany(mappedBy = "usuario")
 	private List<Emprestimo> emprestimo;
 
-	public Usuario(String nome, String cpf, Genero genero, Endereco endereco, Contato contato, Login login) {
+	public Usuario(String nome, String cpf, Genero genero, Endereco endereco, Contato contato, Login login, String perfil) {
 		super();
 
 		this.nome = nome;
@@ -60,6 +61,7 @@ public class Usuario implements Serializable {
 		this.endereco = endereco;
 		this.contato = contato;
 		this.login = login;
+		this.perfil= perfil;
 	}
 
 	public Usuario() {
@@ -138,4 +140,14 @@ public class Usuario implements Serializable {
 	public void setLogin(Login login) {
 		this.login = login;
 	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+	
+	
 }
