@@ -36,9 +36,18 @@ public enum Periodo {
 		this.valor = valor;
 	}
 	
-	public static Enum<?> toEnum(Integer codigo) {
+	public static Periodo toEnum(Integer codigo) {
 		for (Periodo p : Periodo.values()) {
 			if(codigo.equals(p.getChave())) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
+	public static Periodo toEnum(String valor) {
+		for (Periodo p : Periodo.values()) {
+			if (valor.equals(p.valor)) {
 				return p;
 			}
 		}

@@ -28,9 +28,17 @@ public enum Genero {
 		this.valor = valor;
 	}
 
-	public static Enum<?> toEnum(Integer codigo) {
+	public static Genero toEnum(Integer codigo) {
 		for (Genero g : Genero.values()) {
 			if (codigo.equals(g.codigo)) {
+				return g;
+			}
+		}
+		return null;
+	}
+	public static Genero toEnum(String valor) {
+		for (Genero g : Genero.values()) {
+			if (valor.equals(g.valor)) {
 				return g;
 			}
 		}

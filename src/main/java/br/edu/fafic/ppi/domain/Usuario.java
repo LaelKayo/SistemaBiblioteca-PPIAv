@@ -36,7 +36,7 @@ public class Usuario implements Serializable {
 	private String cpf;
 
 	@Enumerated(EnumType.ORDINAL)
-	private Genero genero;
+	private Integer genero;
 
 	@Embedded
 	private Endereco endereco;
@@ -57,7 +57,7 @@ public class Usuario implements Serializable {
 
 		this.nome = nome;
 		this.cpf = cpf;
-		this.genero = genero;
+		this.genero = genero.getCodigo();
 		this.endereco = endereco;
 		this.contato = contato;
 		this.login = login;
@@ -110,11 +110,11 @@ public class Usuario implements Serializable {
 	}
 
 	public Genero getGenero() {
-		return genero;
+		return Genero.toEnum(genero);
 	}
 
 	public void setGenero(Genero genero) {
-		this.genero = genero;
+		this.genero = genero.getCodigo();
 	}
 
 	public Endereco getEndereco() {

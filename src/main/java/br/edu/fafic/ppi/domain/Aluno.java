@@ -21,7 +21,7 @@ public class Aluno extends Usuario{
 	
 	
 	@Enumerated(EnumType.STRING)
-	private Periodo periodo;
+	private Integer periodo;
 	
 	
 	
@@ -31,7 +31,7 @@ public class Aluno extends Usuario{
 	public Aluno(String nome, String cpf, Genero genero, Endereco endereco, Contato contato,Login login, Curso curso, Periodo periodo, String perfil) {
 		super(nome, cpf, genero, endereco, contato, login, perfil);
 		this.curso = curso;
-		this.periodo = periodo;
+		this.periodo = periodo.getChave();
 	}
 	public Aluno() {
 		// TODO Auto-generated constructor stub
@@ -49,12 +49,12 @@ public class Aluno extends Usuario{
 
 
 	public Periodo getPeriodo() {
-		return periodo;
+		return Periodo.toEnum(periodo);
 	}
 
 
 	public void setPeriodo(Periodo periodo) {
-		this.periodo = periodo;
+		this.periodo = periodo.getChave();
 	}
 	@Override
 	public String toString() {

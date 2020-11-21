@@ -34,7 +34,7 @@ public class Livro implements Serializable{
 	
 	
 	@Enumerated(EnumType.STRING)
-	private Area area;
+	private Integer area;
 	
 	private Integer quantLivro;
 
@@ -50,7 +50,7 @@ public class Livro implements Serializable{
 		super();
 		this.nome = nome;
 		this.isbn = isbn;
-		this.area = area;
+		this.area = area.getCodigo();
 		this.quantLivro = quantLivro;
 	}
 
@@ -94,12 +94,12 @@ public class Livro implements Serializable{
 
 
 	public Area getArea() {
-		return area;
+		return Area.toEnum(area);
 	}
 
 
 	public void setArea(Area area) {
-		this.area = area;
+		this.area = area.getCodigo();
 	}
 
 
