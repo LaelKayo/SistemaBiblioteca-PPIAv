@@ -1,5 +1,6 @@
 package br.edu.fafic.ppi.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,13 @@ public class UsuarioService {
 	    
 	}
 	
-//	public Usuario findyAll() throws Exception{
-//		Optional<Usuario> u = usuarioRepository.findAll();
-//		return u.orElseThrow(()-> new Exception("Nem um usuario cadastrado"));
-//	}
+	public List<Usuario>findAll(){
+		List<Usuario> u = usuarioRepository.findAll();
+		return u;
+	}
+	
+	public Usuario findById(Long id) throws Exception {
+		 Optional<Usuario> u = usuarioRepository.findById(id);
+		 return u.orElseThrow(() -> new  Exception("Erro ao buscar pelo ID"));
+	}
 }

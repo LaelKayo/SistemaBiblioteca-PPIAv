@@ -1,12 +1,17 @@
 package br.edu.fafic.ppi.resource;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.fafic.ppi.domain.Usuario;
 import br.edu.fafic.ppi.service.UsuarioService;
 
 @RestController
@@ -22,8 +27,13 @@ public class UsuarioResource {
 		return ResponseEntity.ok().body(usuarioService.loginUsuario(matricula, senha));
 	}
 	
-//	@GetMapping("/all")
-//	public ResponseEntity buscarTodos() {
-//		return ResponseEntity.ok().body(usuarioService.findyAll());
-//	}
+	@GetMapping("/all")
+	public ResponseEntity<List<Usuario>> findByAllUsuario(){
+		return ResponseEntity.ok().body(usuarioService.findAll());
+	}
+	
+	@GetMapping(path = "/busca/{id}")
+	public ResponseEntity<Usuario> findById(@PathVariable Long id) throws Exception {
+		return new ResponseEntity<>(usuarioService.findById(id), HttpStatus.OK);
+	}
 }
