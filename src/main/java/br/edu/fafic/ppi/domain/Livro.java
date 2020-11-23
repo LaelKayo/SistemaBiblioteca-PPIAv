@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,8 +30,7 @@ public class Livro implements Serializable{
 	@Column(unique = true,length = 10)
 	private String isbn;
 	
-	
-	@Enumerated(EnumType.STRING)
+
 	private Integer area;
 	
 	private Integer quantLivro;

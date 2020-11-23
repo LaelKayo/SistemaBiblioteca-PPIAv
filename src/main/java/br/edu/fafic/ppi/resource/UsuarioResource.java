@@ -21,4 +21,9 @@ public class UsuarioResource {
 		
 		return ResponseEntity.ok().body(usuarioService.loginUsuario(matricula, senha));
 	}
+	
+//	@GetMapping("/all")
+//	public ResponseEntity buscarTodos() {
+//		return ResponseEntity.ok().body(usuarioService.findyAll());
+//	}
 }

@@ -18,4 +18,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	@Query("SELECT u FROM Usuario u WHERE u.login.matricula= :matricula AND u.login.senha= :senha")
 	public Optional<Usuario> autenticacao(@Param("matricula")int matricula, @Param("senha")String senha);
 
+//	public Opitional<Usuario> 
 }

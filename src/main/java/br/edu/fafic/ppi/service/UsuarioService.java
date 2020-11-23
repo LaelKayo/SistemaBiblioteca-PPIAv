@@ -21,4 +21,9 @@ public class UsuarioService {
 	    return u.orElseThrow(()-> new Exception("Matricula ou Senha inválidos"));
 	    
 	}
+	
+//	public Usuario findyAll() throws Exception{
+//		Optional<Usuario> u = usuarioRepository.findAll();
+//		return u.orElseThrow(()-> new Exception("Nem um usuario cadastrado"));
+//	}
 }

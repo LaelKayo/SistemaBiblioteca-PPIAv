@@ -2,8 +2,6 @@ package br.edu.fafic.ppi.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 
 import br.edu.fafic.ppi.enuns.Genero;
@@ -20,7 +18,6 @@ public class Aluno extends Usuario{
 	private Curso curso;
 	
 	
-	@Enumerated(EnumType.STRING)
 	private Integer periodo;
 	
 	

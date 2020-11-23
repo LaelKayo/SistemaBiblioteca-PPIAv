@@ -2,8 +2,6 @@ package br.edu.fafic.ppi.domain;
 
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
@@ -29,8 +27,8 @@ public class Professor extends Usuario{
 	private Curso curso;
 	
 	
-	@Enumerated(EnumType.STRING)
-	private Area area;
+
+	private Integer area;
 	
 	
 	
@@ -41,11 +39,10 @@ public class Professor extends Usuario{
 
 
 
-	public Professor(String nome, String cpf, Genero genero, Endereco endereco,
-			Contato contato, Login login, Curso curso, Area area, String perfil) {
+	public Professor(String nome, String cpf, Genero genero, Endereco endereco,Contato contato, Login login, Curso curso, Area area, String perfil) {
 		super(nome, cpf, genero, endereco, contato, login, perfil);
 		this.curso = curso;
-		this.area = area;
+		this.area = area.getCodigo();
 	}
 
 
@@ -66,14 +63,14 @@ public class Professor extends Usuario{
 
 
 	public Area getArea() {
-		return area;
+		return Area.toEnum(area);
 	}
 
 
 
 
 	public void setArea(Area area) {
-		this.area = area;
+		this.area = area.getCodigo();
 	}
 
 
