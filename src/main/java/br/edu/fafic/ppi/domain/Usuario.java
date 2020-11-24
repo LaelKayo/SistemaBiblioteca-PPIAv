@@ -49,6 +49,7 @@ public class Usuario implements Serializable {
 	
 	@ManyToMany(mappedBy = "usuario")
 	private List<Emprestimo> emprestimo;
+	
 
 	public Usuario(String nome, String cpf, Genero genero, Endereco endereco, Contato contato, Login login, String perfil) {
 		super();

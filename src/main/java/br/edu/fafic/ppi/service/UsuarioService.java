@@ -32,4 +32,10 @@ public class UsuarioService {
 		 Optional<Usuario> u = usuarioRepository.findById(id);
 		 return u.orElseThrow(() -> new  Exception("Erro ao buscar pelo ID"));
 	}
+	
+	public void deleteById(Long id) {
+		usuarioRepository.deleteById(id);
+		
+	}
+
 }
