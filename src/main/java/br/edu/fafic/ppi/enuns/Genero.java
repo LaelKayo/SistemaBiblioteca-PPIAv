@@ -44,13 +44,13 @@ public enum Genero {
 		return null;
 	}
 	
-	@JsonCreator(mode = JsonCreator.Mode.DELEGATING)
-	public static Genero toEnum(String valor) {
-		for (Genero g : Genero.values()) {
-			if (valor.equals(g.valor)) {
-				return g;
-			}
-		}
-		return null;
-	}
+//	@JsonCreator(mode = JsonCreator.Mode.DELEGATING)
+//	public static Genero toEnum(String valor) {
+//		for (Genero g : Genero.values()) {
+//			if (valor.equals(g.valor)) {
+//				return g;
+//			}
+//		}
+//		return null;
+//	}
 }
