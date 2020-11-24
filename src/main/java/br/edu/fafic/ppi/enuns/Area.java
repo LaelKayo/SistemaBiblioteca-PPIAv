@@ -1,5 +1,11 @@
 package br.edu.fafic.ppi.enuns;
 
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Area {
 
 	EXATAS(1, "Exatas"), HUMANAS(2, "Humanas");
@@ -7,6 +13,7 @@ public enum Area {
 	private Integer codigo;
 	private String valor;
 
+	@JsonValue
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -28,6 +35,7 @@ public enum Area {
 		this.valor = valor;
 	}
 
+	@JsonCreator(mode = JsonCreator.Mode.DELEGATING)
 	public static Area toEnum(Integer codigo) {
 		for (Area a : Area.values()) {
 			if (codigo.equals(a.codigo)) {
@@ -36,6 +44,7 @@ public enum Area {
 		}
 		return null;
 	}
+	@JsonCreator(mode = JsonCreator.Mode.DELEGATING)
 	public static Area toEnum(String valor) {
 		for (Area a : Area.values()) {
 			if (valor.equals(a.valor)) {

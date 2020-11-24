@@ -1,5 +1,11 @@
 package br.edu.fafic.ppi.enuns;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Periodo {
 
 	P1(1, "p1"),
@@ -36,6 +42,7 @@ public enum Periodo {
 		this.valor = valor;
 	}
 	
+	@JsonCreator(mode = JsonCreator.Mode.DELEGATING)
 	public static Periodo toEnum(Integer codigo) {
 		for (Periodo p : Periodo.values()) {
 			if(codigo.equals(p.getChave())) {
@@ -45,6 +52,7 @@ public enum Periodo {
 		return null;
 	}
 	
+	@JsonCreator(mode = JsonCreator.Mode.DELEGATING)
 	public static Periodo toEnum(String valor) {
 		for (Periodo p : Periodo.values()) {
 			if (valor.equals(p.valor)) {

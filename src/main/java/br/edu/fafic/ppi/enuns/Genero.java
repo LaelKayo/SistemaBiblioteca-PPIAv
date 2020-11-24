@@ -1,5 +1,11 @@
 package br.edu.fafic.ppi.enuns;
 
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Genero {
 
 	MASCULINO(1, "Masculino"), FEMININO(2, "Feminino");
@@ -28,6 +34,7 @@ public enum Genero {
 		this.valor = valor;
 	}
 
+	@JsonCreator(mode = JsonCreator.Mode.DELEGATING)
 	public static Genero toEnum(Integer codigo) {
 		for (Genero g : Genero.values()) {
 			if (codigo.equals(g.codigo)) {
@@ -36,6 +43,8 @@ public enum Genero {
 		}
 		return null;
 	}
+	
+	@JsonCreator(mode = JsonCreator.Mode.DELEGATING)
 	public static Genero toEnum(String valor) {
 		for (Genero g : Genero.values()) {
 			if (valor.equals(g.valor)) {
