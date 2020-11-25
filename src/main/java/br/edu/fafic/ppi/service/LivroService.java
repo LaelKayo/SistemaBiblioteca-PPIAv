@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.fafic.ppi.domain.Bibliotecario;
 import br.edu.fafic.ppi.domain.Livro;
 import br.edu.fafic.ppi.enuns.Area;
 import br.edu.fafic.ppi.repository.LivroRepository;
@@ -15,6 +16,18 @@ public class LivroService {
 
 	@Autowired
 	private LivroRepository lr;
+	
+	//
+	public Livro inserir(Livro livro) {
+		return lr.save(livro);
+	}
+	
+	//
+	public Livro update(Livro livro) {
+		return lr.save(livro);
+	}
+
+	
 	
 	public Livro findByIsbn(String isbn) throws Exception {
 		Optional<Livro> l = lr.findByIsbn(isbn);

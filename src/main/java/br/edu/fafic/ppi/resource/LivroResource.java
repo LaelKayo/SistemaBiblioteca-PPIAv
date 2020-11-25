@@ -3,15 +3,20 @@ package br.edu.fafic.ppi.resource;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.fafic.ppi.domain.Bibliotecario;
 import br.edu.fafic.ppi.domain.Livro;
+import br.edu.fafic.ppi.domain.Usuario;
 import br.edu.fafic.ppi.repository.LivroRepository;
 import br.edu.fafic.ppi.service.LivroService;
 
@@ -26,22 +31,34 @@ public class LivroResource {
 	private LivroService ls;
 	
 	
+//	
+//	@RequestMapping(method = RequestMethod.POST)
+//	public ResponseEntity<Livro> save(@RequestBody Livro l){
+//		lr.save(l);
+//		
+//		return ResponseEntity.ok().body(l);
+//		
+//	}
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Livro> save(@RequestBody Livro l){
-		lr.save(l);
-		
-		return ResponseEntity.ok().body(l);
-		
+	//
+	@PostMapping
+	public ResponseEntity<?> inserir(@RequestBody Livro livro) {
+		return new ResponseEntity<>(ls.inserir(livro), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/update",method = RequestMethod.PUT)
-	public ResponseEntity<Livro> update(@RequestBody Livro l){
-		lr.save(l);
-		
-		return ResponseEntity.ok().body(l);
-		
+	@PutMapping
+	public ResponseEntity<?> update(@RequestBody Livro livro) throws Exception {
+		return new ResponseEntity<>(ls.update(livro), HttpStatus.OK);
 	}
+
+	
+//	@RequestMapping(value = "/update",method = RequestMethod.PUT)
+//	public ResponseEntity<Livro> update(@RequestBody Livro l){
+//		lr.save(l);
+//		
+//		return ResponseEntity.ok().body(l);
+//		
+//	}
 	
 	
 	@RequestMapping(value = "/isbn/{isbn}", method = RequestMethod.GET)
@@ -89,12 +106,18 @@ public class LivroResource {
 	
 	
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<List<Livro>> findByLivroQuantDisponivel(@PathVariable Long id) {
-		
-		
+//	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+//	public ResponseEntity<List<Livro>> findByLivroQuantDisponivel(@PathVariable Long id) {
+//		
+//		
+//		ls.deleteById(id);
+//		
+//		return ResponseEntity.ok().build();
+//	}
+	
+	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+	public ResponseEntity<Livro> deleteById(@PathVariable Long id) {
 		ls.deleteById(id);
-		
 		return ResponseEntity.ok().build();
 	}
 	
