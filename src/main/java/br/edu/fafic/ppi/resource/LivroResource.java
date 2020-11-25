@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,12 +50,28 @@ public class LivroResource {
 
 		return ResponseEntity.ok().body(l);
 	}
+	
+	@RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Livro> findByLivroById(@PathVariable Long id) throws Exception {
+		Livro l = ls.findById(id);
+
+		return ResponseEntity.ok().body(l);
+	}
+	
+	
 
 	@RequestMapping(value = "/area/{area}", method = RequestMethod.GET)
 	public ResponseEntity<Livro> findByLivroByArea(@PathVariable String area) throws Exception {
 		Livro l = ls.findByArea(area);
 
 		return ResponseEntity.ok().body(l);
+	}
+	
+	
+	@GetMapping("/all")
+	public ResponseEntity<List<Livro>> findByAll() throws Exception {
+
+		return ResponseEntity.ok().body(ls.findByAll());
 	}
 
 	@RequestMapping(value = "/nome/{nome}", method = RequestMethod.GET)
@@ -72,7 +89,7 @@ public class LivroResource {
 	
 	
 	
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<List<Livro>> findByLivroQuantDisponivel(@PathVariable Long id) {
 		
 		

@@ -22,6 +22,12 @@ public class LivroService {
 		return l.orElseThrow(()-> new Exception("Erro ao consultar livro"));
 	}
 	
+	public Livro findById(Long id) throws Exception {
+		Optional<Livro> l = lr.findById(id);
+		
+		return l.orElseThrow(()-> new Exception("Erro ao consultar livro"));
+	}
+	
 	
 	public Livro findByArea(String area) throws Exception {
 		Livro l = lr.findByArea(Area.toEnum(area));
@@ -41,6 +47,14 @@ public class LivroService {
 		
 		return l.orElseThrow(()-> new Exception("Erro ao consultar livro"));
 	}
+	
+	
+	public List<Livro> findByAll() throws Exception {
+		List<Livro> l = lr.findAll();
+		
+		return l;
+	}
+	
 	
 	
 	public void deleteById(Long id) {

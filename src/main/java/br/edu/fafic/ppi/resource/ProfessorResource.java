@@ -52,8 +52,8 @@ public class ProfessorResource {
 	}
 	
 	
-	@RequestMapping(value = "/delete/{id}",method = RequestMethod.DELETE)
-	public ResponseEntity<Professor> deleteById(@RequestBody Long id) {
+	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+	public ResponseEntity<Professor> deleteById(@PathVariable Long id) {
 
 		ps.deleteById(id);
 
