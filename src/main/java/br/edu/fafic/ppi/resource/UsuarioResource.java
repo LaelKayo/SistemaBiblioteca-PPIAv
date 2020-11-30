@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.fafic.ppi.domain.Aluno;
 import br.edu.fafic.ppi.domain.Usuario;
 import br.edu.fafic.ppi.service.UsuarioService;
 
@@ -25,6 +26,14 @@ public class UsuarioResource {
 	public ResponseEntity<Usuario> logByMatriculaSenha(@PathVariable("matricula")int matricula, @PathVariable("senha")String senha) throws Exception {
 		
 		return ResponseEntity.ok().body(usuarioService.loginUsuario(matricula, senha));
+	}
+	
+	@RequestMapping(value = "/nome/{nome}", method = RequestMethod.GET)
+	public ResponseEntity<Usuario> findByUsuarioByNome(@PathVariable String nome) throws Exception {
+
+		Usuario u = usuarioService.findByNome(nome);
+
+		return ResponseEntity.ok().body(u);
 	}
 	
 	@GetMapping("/all")
