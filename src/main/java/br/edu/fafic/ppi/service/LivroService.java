@@ -31,7 +31,6 @@ public class LivroService {
 	
 	public Livro findByIsbn(String isbn) throws Exception {
 		Optional<Livro> l = lr.findByIsbn(isbn);
-		
 		return l.orElseThrow(()-> new Exception("Erro ao consultar livro"));
 	}
 	

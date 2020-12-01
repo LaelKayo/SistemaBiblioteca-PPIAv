@@ -61,12 +61,18 @@ public class LivroResource {
 //	}
 	
 	
-	@RequestMapping(value = "/isbn/{isbn}", method = RequestMethod.GET)
-	public ResponseEntity<Livro> findByLivroByIsbn(@PathVariable String isbn) throws Exception {
-		Livro l = ls.findByIsbn(isbn);
-
-		return ResponseEntity.ok().body(l);
+//	@RequestMapping(value = "/isbn/{isbn}", method = RequestMethod.GET)
+//	public ResponseEntity<Livro> findByLivroByIsbn(@PathVariable String isbn) throws Exception {
+//		Livro l = ls.findByIsbn(isbn);
+//
+//		return ResponseEntity.ok().body(l);
+//	}
+	
+	@GetMapping(path = "/isbn/{isbn}")
+	public ResponseEntity<?> findByLivroByIsbn(@PathVariable String isbn) throws Exception {
+		return new ResponseEntity<>(ls.findByIsbn(isbn), HttpStatus.OK);
 	}
+
 	
 	@RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Livro> findByLivroById(@PathVariable Long id) throws Exception {
