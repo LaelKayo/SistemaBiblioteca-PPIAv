@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import br.edu.fafic.ppi.service.LivroService;
 
 @RestController
 @RequestMapping(value = "/livro")
+@CrossOrigin("*")
 public class LivroResource {
 
 	@Autowired
@@ -69,7 +71,7 @@ public class LivroResource {
 //	}
 	
 	@GetMapping(path = "/isbn/{isbn}")
-	public ResponseEntity<?> findByLivroByIsbn(@PathVariable String isbn) throws Exception {
+	public ResponseEntity<Livro> findByLivroByIsbn(@PathVariable String isbn) throws Exception {
 		return new ResponseEntity<>(ls.findByIsbn(isbn), HttpStatus.OK);
 	}
 
