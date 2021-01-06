@@ -33,7 +33,7 @@ public class Emprestimo implements Serializable {
 
 	
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne//(cascade = CascadeType.MERGE)
 	@JoinTable(name = "Emprestimos_Usuarios", joinColumns = {
 			@JoinColumn(name = "Emprestimo_id") }, inverseJoinColumns = { @JoinColumn(name = "Usuario_id") })
 	private Usuario usuario;
@@ -46,7 +46,7 @@ public class Emprestimo implements Serializable {
 	private List<Livro> livrosLocados;
 
 	public Emprestimo() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Emprestimo(Date dataEmprestimo, List<Livro> livrosLocados) {

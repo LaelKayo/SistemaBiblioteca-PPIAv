@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import br.edu.fafic.ppi.domain.Aluno;
 import br.edu.fafic.ppi.domain.Usuario;
 import br.edu.fafic.ppi.repository.UsuarioRepository;
 

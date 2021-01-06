@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import br.edu.fafic.ppi.domain.Bibliotecario;
 import br.edu.fafic.ppi.domain.Livro;
-import br.edu.fafic.ppi.domain.Usuario;
-import br.edu.fafic.ppi.repository.LivroRepository;
 import br.edu.fafic.ppi.service.LivroService;
 
 @RestController
@@ -26,8 +22,7 @@ import br.edu.fafic.ppi.service.LivroService;
 @CrossOrigin("*")
 public class LivroResource {
 
-	@Autowired
-	private LivroRepository lr;
+
 	
 	@Autowired
 	private LivroService ls;

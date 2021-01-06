@@ -1,5 +1,9 @@
 package br.edu.fafic.ppi.service;
 
+
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +16,6 @@ import br.edu.fafic.ppi.repository.EmprestimoRepository;
 @Service
 public class EmprestimoService {
 
-	
 	
 	@Autowired
 	private EmprestimoRepository er;
@@ -34,16 +37,37 @@ public class EmprestimoService {
 		return m.orElseThrow(()-> new Exception("Erro ao consultar a movimentacao"));
 	}
 	
-	public Emprestimo findByEmprestimoAluno(String nome) throws Exception {
-		Optional<Emprestimo> m = er.findByEmprestimoAluno(nome);
-		
-		return m.orElseThrow(() -> new Exception("Erro"));
+	public List<Emprestimo> findByEmprestimoAluno(String nome) throws Exception {
+		List<Emprestimo> m = er.findByEmprestimoAluno(nome);
+
+		return m;
 	}
 	
 	
 	public void deletById(Long id) {
 		er.deleteById(id);
 	}
+	
+	
+	public boolean verificaDevolucao(Long idEmprestimo) {
+	
+		
+		return er.verificaDevolucao(idEmprestimo) !=null;
+	}
+	
+	public List<Emprestimo> findByEmprestimoPendentes(String nome) throws Exception {
+		List<Emprestimo> emprestTemp = new ArrayList<>();
+		List<Emprestimo> m = er.findByEmprestimoAluno(nome);
+		for(Emprestimo e: m) {
+			if(!verificaDevolucao(e.getId())) {
+				emprestTemp.add(e);
+			}
+		}
+		return emprestTemp;
+	}
+	
+	
+	
 	
 	
 	

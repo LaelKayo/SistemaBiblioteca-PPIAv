@@ -42,14 +42,14 @@ public class DevolucaoService {
 
 	}
 
-	public Devolucao findyByCalculoAtraso(Devolucao devolucao) {
+	public double findyByCalculoAtraso(Devolucao devolucao) {
 		double multa = 0.0;
-		Optional<Devolucao> d = dr.findById(devolucao.getId());
+//		Optional<Devolucao> d = dr.findById(devolucao.getId());
 		Optional<Emprestimo> e = er.findById(devolucao.getEmprestimo().getId());
 		Emprestimo es = e.get();
-		Devolucao ds = d.get();
 		
-		LocalDate dd= LocalDate.parse(ds.getDataDevolucao().toString());
+		
+		LocalDate dd= LocalDate.now();
 		LocalDate de = LocalDate.parse(es.getDataEmprestimo().toString());
 		
 
@@ -64,9 +64,9 @@ public class DevolucaoService {
 		
 		System.out.println("Multa: " +multa);
 
-		devolucao.setMulta(multa);
+		//devolucao.setMulta(multa);
 
-		return devolucao;
+		return multa;
 	}
 
 }

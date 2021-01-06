@@ -1,5 +1,8 @@
 package br.edu.fafic.ppi.resource;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,9 +25,10 @@ public class EmprestimoResource {
 	EmprestimoService es;
 	
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/",method = RequestMethod.POST)
 	public ResponseEntity<Emprestimo> saveMovimentacao(@RequestBody Emprestimo emp){
 		
+		emp.setDataEmprestimo(new Date());
 		
 		Emprestimo e = es.save(emp);
 		
@@ -50,8 +54,17 @@ public class EmprestimoResource {
 	}
 	
 	@RequestMapping(value = "/{nome}", method = RequestMethod.GET)
-	public ResponseEntity<Emprestimo> findByEmprestimoAluno(@PathVariable String nome) throws Exception{
-		Emprestimo e = es.findByEmprestimoAluno(nome);
+	public ResponseEntity<List<Emprestimo>> findByEmprestimoAluno(@PathVariable String nome) throws Exception{
+		List<Emprestimo> e = es.findByEmprestimoAluno(nome);
+		
+		
+		return ResponseEntity.ok().body(e);
+		
+	}
+	
+	@RequestMapping(value = "/pendentes/{nome}", method = RequestMethod.GET)
+	public ResponseEntity<List<Emprestimo>> findByEmprestimoPendentes(@PathVariable String nome) throws Exception{
+		List<Emprestimo> e = es.findByEmprestimoPendentes(nome);
 		
 		
 		return ResponseEntity.ok().body(e);

@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import br.edu.fafic.ppi.domain.Bibliotecario;
 import br.edu.fafic.ppi.domain.Livro;
 import br.edu.fafic.ppi.enuns.Area;
 import br.edu.fafic.ppi.repository.LivroRepository;

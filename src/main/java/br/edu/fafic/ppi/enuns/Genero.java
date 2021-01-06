@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Genero {
 
@@ -12,7 +13,10 @@ public enum Genero {
 
 	private Integer codigo;
 	private String valor;
-
+	
+	
+	
+	@JsonValue
 	public Integer getCodigo() {
 		return codigo;
 	}
